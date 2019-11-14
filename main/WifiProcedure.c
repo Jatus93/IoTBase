@@ -52,7 +52,7 @@ TaskHandle_t hand;
 static bool scanDone = false;
 
 static char* getAuthModeName(wifi_auth_mode_t auth_mode) {
-	
+
 	char *names[] = {"OPEN", "WEP", "WPA PSK", "WPA2 PSK", "WPA WPA2 PSK", "MAX"};
 	return names[auth_mode];
 }
@@ -62,7 +62,7 @@ void char_to_uint(uint8_t* dest,char* src,int d_size,size_t s_size){
             if(i<=s_size)
                 dest[i] = src[i];
             else
-                dest[i] ='\0';        
+                dest[i] ='\0';
     }
     ESP_LOGI(TAG,"Received PWD: %s \n",src);
     ESP_LOGI(TAG,"Saved SSID: %s \n",(char*)dest);
@@ -99,7 +99,7 @@ void wifi_scan(){
     };
     ESP_ERROR_CHECK(esp_wifi_scan_start(&scan_config, true));
     ESP_ERROR_CHECK(esp_wifi_scan_get_ap_records(&aps,records));
-    
+
 }
 
 void scanTask(){
@@ -162,6 +162,7 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,int32_t ev
         ESP_LOGI(TAG," %s ","WIFI_EVENT_STA_DISCONNECTED");
         if(cTry == 0){
             scanDone = false;
+            wifi_init_softap();
             startScanTask();
             //ws_server_send_text_all(FCONNECTION,strlen(FCONNECTION));
         }else
@@ -191,7 +192,7 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,int32_t ev
     default:
         break;
     }
-    
+
 }
 
 void connectToStored(){
@@ -213,6 +214,7 @@ void connectToStored(){
         esp_restart();
     }
 }
+
 void wifi_start()
 {
     ESP_LOGI(TAG, "ESP_WIFI_MODE_AP");
