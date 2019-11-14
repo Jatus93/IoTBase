@@ -144,7 +144,26 @@ input{
   font-size: 1em;
 }
 
+
+/* Some edits */
+
 body{
-  font-size: 3em;
-  background-color: #EEE;
+  font-size: 14pt;
+  background-color: #343434;
+}
+
+h1{
+  font-size: 2em;
+}
+
+.btn-a{
+  background-color: #5e8290;
+}
+
+tr{
+  background-color: #CCC;
+}
+
+th{
+  color: #FAFAFA;
 }
