@@ -7,7 +7,6 @@
    CONDITIONS OF ANY KIND, either express or implied.
 */
 #include "WebServer.c"
-#include "MqttManager.c"
 //#define CONFIG_TCPIP_LWIP 1
 
 static int status = 0;
@@ -17,8 +16,6 @@ void app_main()
     wifi_start();
     if(scanDone)
         status = 1;
-    //server_start();
-    mqtt_init();
+    server_start();
 
 }
-
