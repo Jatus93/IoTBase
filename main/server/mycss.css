@@ -1,3 +1,14 @@
+a:link, a:visited, a:hover{
+    color: black
+}
+.input_row{
+    display: inline-block;
+}
+.clm{
+    display: inline-block;
+    height: 2em;
+    width:  15%;
+}
 .lds-ellipsis {
   display: inline-block;
   position: relative;
@@ -52,118 +63,4 @@
   100% {
     transform: translate(19px, 0);
   }
-}
-.hidden_block{
-  display: none;
-}
-
-.visible_block{
-  margin: auto;
-  text-align: center;
-  width: 100%;
-  display: block;
-}
-
-.loading_block{
-  background: rgba(200,200,200,0.50);
-  vertical-align: center;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.input_row{
-  width: 50%;
-  margin: auto;
-  text-align: center;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-}
-.box{
-  visibility: hidden;
-  max-width: 100px;
-  height: 50px;
-  margin: auto;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  position: fixed;
-  z-index: 1;
-  left: 0;right:0;
-  margin-bottom: 10%;
-  font-size: 17px;
-  white-space: nowrap;
-  -webkit-box-shadow: 10px 9px 23px 1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 9px 23px 1px rgba(0,0,0,0.75);
-  box-shadow: 10px 9px 23px 1px rgba(0,0,0,0.75);
-}
-.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 1s 2.5s;
-  animation: fadein 0.5s, fadeout 1s 2.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;} 
-  to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;} 
-  to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-.box#success {
-  background-color: #11a6fe;
-}
-
-.box#fail {
-  background-color: #d64b4b;
-}
-.boxFade:hover{
-  opacity: 0;
-}
-input{
-  font-size: 0.5em;
-}
-
-.mbtn{
-  font-size: 1em;
-}
-
-
-/* Some edits */
-
-body{
-  font-size: 14pt;
-  background-color: #343434;
-}
-
-h1{
-  font-size: 2em;
-}
-
-.btn-a{
-  background-color: #5e8290;
-}
-
-tr{
-  background-color: #CCC;
-}
-
-th{
-  color: #FAFAFA;
 }

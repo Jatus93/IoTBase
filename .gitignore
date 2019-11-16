@@ -30,7 +30,5 @@
 *.exe
 *.out
 *.app
-*.mk
-*.bin
 
 build

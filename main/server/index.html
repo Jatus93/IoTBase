@@ -1,72 +1,71 @@
 <!DOCTYPE html>
-<head>
-  <link rel="stylesheet" type="text/css" href="entireframework.min.css">
-  <link rel="stylesheet" type="text/css" href="mycss.css">
-  <script type="text/javascript" src="myjs.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Setup</title>
-</head>
-<body>
-  <div class="visible_block" id="mainList">
-    <h1>Choose a network</h1>
-    <button class="btn btn-sm btn-a mbtn" onclick="wsocket.send('')">load</button>
-    <button class="btn btn-sm btn-a mbtn" onclick="wpsCommand()">WPS</button>
-    <div style="overflow-x: auto; margin: 20px auto 40px;">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>
-            SSID
-          </th>
-          <th>
-            Signal
-          </th>
-          <th>
-            Security
-          </th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-      </tbody>
-    </table>
-    </div>
-  </div>
-  <div class="hidden_block" id="input">
-    <h1>Insert credentials</h1>
-    <button class="btn btn-sm mbtn" onclick="hide('input');hide('save');setVisible('mainList');refreshList();">back</button>
-    <div class="input_row">
-      <label for="ssid">SSID</label>
-      <input name="ssid" id="ssid" type="text" class="smooth" value=""/>
-    </div>
-    <div class="input_row">
-      <label for="pwd">password</label>
-      <input name="pwd" id="pwd" type="password" class="smooth"/>
-    </div>
-    <div class="input_row">
-      <lable for="security">security type</label>
-        <select name="security" class="smooth" id="security">
-          <option value="0" >OPEN</option>
-          <option value="1" >WPA</option>
-          <option value="2" >WPA PSK</option>
-          <option value="3" >WPA2 PSK</option>
-          <option value="4" >WPA WPA2 PSK</option>
-          <option value="5" >MAX</option>
-        </select>
-      </div>
-      <input type="hidden" name="channel" id="channel" value="0"/>
-      <button class="btn btn-sm btn-b mbtn" onclick="tryConnect()"> connect! </button>
-      <div class="hidden_block" id="save">
-        <button class="btn btn-sm btn-b mbtn" onclick="sendSaveCommand()">save</button>
-      </div>
-    </div>
-    <div class="hidden_block loading_block" id="loading">
-      <p>Try to connect</p>
-      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-    </div>
-    <div class="container loading_block box" id="success">
-      <p>Success!</p>
-    </div>
-    <div class="container loading_block box" id="fail">
-      <p>Error!</p>
-    </div>
-  </body>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="mycss.css">
+        <link rel="stylesheet" type="text/css" href="entireframework.min.css"/>
+        <title>Setup</title>
+    </head>
+    <body>
+        <div class="jumbo container _box _shadow _width100" id="mainList">
+            <h1>Choose a network</h1>
+            <button class="_info" onclick="wsocket.send('')">load</button>
+            <button onclick="wpsCommand()">WPS</button>
+            <table class="_width100">
+                <thead>
+                    <tr>
+                        <th>SSID</th>
+                        <th>SIGNAL</th>
+                        <th>SECURITY</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
+        <div class="jumbo container _box _shadow _width100 _hidden" id="input">
+            <h1>Insert credentials</h1>
+            <button class="_danger" onclick="hide('input');hide('save');setVisible('mainList');refreshList();">back</button>
+            <div>
+                <div class="input_row">
+                    <label for="ssid">SSID</label>
+                    <input name="ssid" id="ssid" type="text" class="smooth" value=""/>
+                </div>
+                <div class="input_row">
+                    <label for="pwd">password</label>
+                    <input name="pwd" id="pwd" type="password" class="smooth"/>
+                </div>
+                <div class="input_row">
+                    <label for="security">security type</label>
+                    <select name="security" class="smooth" id="security">
+                        <option value="0" >OPEN</option>
+                        <option value="1" >WPA</option>
+                        <option value="2" >WPA PSK</option>
+                        <option value="3" >WPA2 PSK</option>
+                        <option value="4" >WPA WPA2 PSK</option>
+                        <option value="5" >MAX</option>
+                    </select>
+                </div>
+                <input type="hidden" name="channel" id="channel" value="0"/>
+                <button class="btn btn-sm btn-b mbtn" onclick="tryConnect()"> connect! </button>
+                <div class="hidden_block" id="save">
+                    <button class="btn btn-sm btn-b mbtn" onclick="sendSaveCommand()">save</button>
+                </div>
+            </div>
+        </div>
+        <div class="modalbox-modal" id="loading">
+            <div class="container jumbo _info modalbox-modal-content">
+                <p>Try to connect</p>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
+        </div>
+        <div class="alert _success _box _shadow snackbar" id="success">
+            <p>Success!</p>
+        </div>
+        <div class="alert _shadow _box _width10 snackbar" id="fail">
+            <p>Error!</p>
+        </div>
+        <button onclick="openmodal('loading')">test success</button>
+        <script src="myjs.js"></script>
+    </body>
+</html>
