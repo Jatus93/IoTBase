@@ -70,7 +70,7 @@ int getNumber(char* key){
     return toReturn;
 }
 
-bool getBoolen(char* key){
+bool getBoolean(char* key){
     int8_t toReturn = 0;
     err = nvs_open(currentNS,NVS_READWRITE,&my_handle);
     ESP_ERROR_CHECK_WITHOUT_ABORT(err);
@@ -106,7 +106,7 @@ void insertNumber(char* key, int value){
     nvs_close(my_handle);
 }
 
-void insertBoolen(char* key, bool value){
+void insertBoolean(char* key, bool value){
     err = nvs_open(currentNS,NVS_READWRITE,&my_handle);
     ESP_ERROR_CHECK_WITHOUT_ABORT(err);
     err = nvs_set_i8(my_handle, key , (int8_t)value);

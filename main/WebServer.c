@@ -7,7 +7,7 @@
 
 #include "esp_wifi.h"
 #include "esp_log.h"
-#include "esp_event_loop.h"
+#include "esp_event.h"
 #include "nvs_flash.h"
 #include "driver/ledc.h"
 
@@ -56,7 +56,7 @@ void websocket_callback(uint8_t num,WEBSOCKET_TYPE_t type,char* msg,uint64_t len
         if(cJSON_GetObjectItem(message,"save")->valueint == 1){
           insertString("ssid",cJSON_GetObjectItem(message,"ssid")->valuestring);
           insertString("pwd",cJSON_GetObjectItem(message,"pwd")->valuestring);
-          insertBoolen("cnf",true);
+          insertBoolean("cnf",true);
           ws_server_send_text_all(SCONNECTION,strlen(SCONNECTION));
         }
       }
@@ -65,6 +65,14 @@ void websocket_callback(uint8_t num,WEBSOCKET_TYPE_t type,char* msg,uint64_t len
         if(cJSON_GetObjectItem(message,"wps")->valueint == 1){
           esp_wifi_wps_enable(&wps_cfg);
           esp_wifi_wps_start(0);
+        }
+      }
+      if(cJSON_GetObjectItem(message,"reset")){
+        scanDone = true;
+        if(cJSON_GetObjectItem(message,"reset")->valueint == 1){
+          setNameSpace("wifi");
+          insertBoolean("cnf",false);
+          esp_restart();
         }
       }
       break;
@@ -395,7 +403,7 @@ static void server_handle_task(void* pvParameters) {
     if(scanDone)
       http_serve(conn);
     else
-      serve_module(conn);    
+      serve_module(conn);
   }
   vTaskDelete(NULL);
 }

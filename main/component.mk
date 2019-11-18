@@ -6,4 +6,4 @@
 # in the build directory. This behaviour is entirely configurable,
 # please read the ESP-IDF documents if you need to do this.
 #
-COMPONENT_EMBED_FILES := ./server/error.html ./server/favicon.ico ./server/index.html ./server/mycss.css ./server/entireframework.min.css ./server/myjs.js
+COMPONENT_EMBED_FILES := ./server/error.html ./server/favicon.ico ./server/index.html ./server/index.done.html ./server/mycss.css ./server/entireframework.min.css ./server/myjs.js

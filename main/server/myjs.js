@@ -107,6 +107,11 @@ function wpsCommand(){
     openmodal('loading');
 }
 
+function resetCommand(){
+    wsocket.send('{"reset":1}');
+    openmodal('loading');
+}
+
 function sendSaveCommand(){
     var form = document.getElementsByTagName('form');
     var request = {};
